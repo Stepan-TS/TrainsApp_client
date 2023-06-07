@@ -1,0 +1,24 @@
+.form {
+  position: relative;
+}
+.btn-submit {
+    position: absolute;
+    bottom: -30px;
+    right: 80px;
+  &_search {
+    width: 250px;
+    height: 70px;
+    background-color: #ec9a45;
+    color: white;
+    border-radius: 50px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+
+    transition: 1s;
+
+    &:hover {
+      background-color: #da760c;
+    }
+  }
+}

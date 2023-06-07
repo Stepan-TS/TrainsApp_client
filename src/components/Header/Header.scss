@@ -1,0 +1,39 @@
+body {
+  position: relative;
+}
+
+.header {
+  display: flex;
+  width: calc(100% - 100px);
+  height: 100px;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: transparent;
+
+  position: fixed;
+
+  padding: 0 50px;
+  
+}
+
+.header-white {
+  display: flex;
+  width: calc(100% - 100px);
+  height: 100px;
+  justify-content: space-between;
+  align-items: center;
+
+  position: fixed;
+  
+  background-color: white;
+  border-bottom: 2px black solid;
+
+  padding: 0 50px;
+  z-index: 999;
+}
+
+.logo {
+  width: 160px;
+  height: 100%;
+}

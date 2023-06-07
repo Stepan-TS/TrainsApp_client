@@ -1,0 +1,18 @@
+.navbar {
+  display: flex;
+  align-items: center;
+   
+    &_field {
+    font-size: 20px;
+
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+    
+    transition: 1s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}

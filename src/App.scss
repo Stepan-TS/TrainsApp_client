@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+  }
+
+a {
+  text-decoration: none;
+  color: rgb(240, 110, 11);
+}
+  
+.App{
+  &-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -1,0 +1,26 @@
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 100px 100px;
+
+  border-radius: 8px;
+  
+  &_fields {
+    display: flex;
+    justify-content: space-between;
+    width: calc(300px + 200px + 500px);
+
+    transition: 1s;
+
+    &:hover {
+      box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+    }
+  }
+
+  height: 200px;
+  background-color: rgba(6,203,103,.6); 
+
+  margin-bottom: 50px;
+}

@@ -1,0 +1,53 @@
+.form {
+  position: relative;
+}
+
+.field {
+  &_item {
+    height: 70px;
+    width: 300px;
+
+    padding-left: 20px;
+    font-size: 20px;
+    color: black;
+    background-color: white;
+    color: rgb(36, 34, 34);
+    border: none;
+    border-radius: 8px;
+
+    margin-bottom: 5px;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      font-size: 18px;
+    }
+  }
+}
+
+.dropdown {
+  position: absolute;
+  background-color: white;
+  width: 322px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  overflow-y: scroll;
+  max-height: 100px;
+  border: none;
+  border-radius: 8px;
+}
+
+.dropdown:empty {
+  border: none;
+}
+
+.dropdown-row {
+  font-size: 20px;
+  padding: 10px 0;
+  cursor: pointer;
+  text-align: center;
+  margin: 2px 0;
+}

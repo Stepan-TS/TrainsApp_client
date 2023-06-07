@@ -1,0 +1,39 @@
+.train {
+  display: flex;
+  background-color: rgb(253, 251, 251);
+  border: 1px solid black;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  width: 100%;
+
+  &_info {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    border-right: 1px solid black;
+  }
+
+  &_content {
+    flex: 8;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &_title {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  &_data, &_time {
+    text-align: center;
+    color: rgb(54, 52, 52);
+  }
+}
