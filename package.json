@@ -1,5 +1,6 @@
 {
   "name": "client",
+  "homepage": "https://Stepan-TS.github.io/TrainsApp_client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -23,9 +24,12 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-methods": "^7.13.0",
-    "@babel/plugin-proposal-private-property-in-object": "^7.13.0"
+    "@babel/plugin-proposal-private-property-in-object": "^7.13.0",
+    "gh-pages": "^5.0.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
