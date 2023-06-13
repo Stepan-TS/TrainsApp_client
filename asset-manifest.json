@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/TrainsApp_client/static/css/main.4905df60.css",
-    "main.js": "/TrainsApp_client/static/js/main.c3d41cc4.js",
+    "main.js": "/TrainsApp_client/static/js/main.6f83de44.js",
     "static/media/foto.jpeg": "/TrainsApp_client/static/media/foto.17932f5f90415661ab42.jpeg",
     "static/media/logo.svg": "/TrainsApp_client/static/media/logo.49f2589bcb91e9688bbe362a6c2a38cb.svg",
     "index.html": "/TrainsApp_client/index.html",
     "main.4905df60.css.map": "/TrainsApp_client/static/css/main.4905df60.css.map",
-    "main.c3d41cc4.js.map": "/TrainsApp_client/static/js/main.c3d41cc4.js.map"
+    "main.6f83de44.js.map": "/TrainsApp_client/static/js/main.6f83de44.js.map"
   },
   "entrypoints": [
     "static/css/main.4905df60.css",
-    "static/js/main.c3d41cc4.js"
+    "static/js/main.6f83de44.js"
   ]
 }
