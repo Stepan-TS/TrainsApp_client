@@ -7,6 +7,7 @@ export const Header = () => {
   const location = useLocation();
 
   const isHomePage = location.pathname === '/';
+  console.log(isHomePage);
   return (
     <div className={isHomePage ? 'header': 'header-white'}>
       <NavLink to="/">
