@@ -10,7 +10,7 @@ export const Navigation = () => {
       <div className="container">
         <div className="navbar">
           <NavLink 
-            to="/home"
+            to="/"
             className='navbar_field'
           >
             Home

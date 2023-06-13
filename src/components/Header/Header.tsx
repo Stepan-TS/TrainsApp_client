@@ -9,7 +9,7 @@ export const Header = () => {
   const isHomePage = location.pathname === '/';
   return (
     <div className={isHomePage ? 'header': 'header-white'}>
-      <NavLink to="/home">
+      <NavLink to="/">
         <img
           className='header_logo'
           src={logo}
