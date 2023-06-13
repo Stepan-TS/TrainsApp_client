@@ -24,7 +24,9 @@ function App() {
       
       <div className='App-content'>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<Navigate to="/home" replace />} />
+
+          <Route path="/home" element={<HomePage />} />
           
           <Route path="newTrain" element={<NewTrain />} />
 
