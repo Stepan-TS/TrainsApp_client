@@ -1,7 +1,7 @@
 import { ITrain } from "../types/ITrain";
 import axios from 'axios';
 
-axios.defaults.baseURL = "https://travelbytrain.onrender.com"
+axios.defaults.baseURL = "https://travelbytrain.onrender.com";
 
 export function getCities(query: string) {
   return axios.get(`/?city=${encodeURIComponent(query)}`)
@@ -30,7 +30,7 @@ export function getOtherDaysTrains(
 }
 
 export function addTrain(train: ITrain): void {
-  axios.post('/trains', train)
+  axios.post('/newTrain', train)
     .then(response => {
       // Handle successful response
       console.log('Train added successfully:', response.data);
