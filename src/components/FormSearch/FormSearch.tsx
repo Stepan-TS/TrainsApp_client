@@ -2,28 +2,23 @@ import './FormSearch.scss';
 
 import { ButtonSubmit } from '../Buttons/ButtonSubmit';
 import { Field } from './Field';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ITrain } from './../../types/ITrain';
 import axios from 'axios';
 import { useSearchParams, NavLink } from 'react-router-dom';
 import { getCities } from '../../api';
 import { ICity } from '../../types/ICity';
-
-axios.defaults.baseURL = "http://localhost:8080"
-
-export function getTrains(
-  city1: string,
-  city2: string,
-): Promise<ITrain[]> {
-  return axios.get(`/trains?city1=${encodeURIComponent(city1)}&city2=${encodeURIComponent(city2)}`)
-    .then(res => res.data)
-}
+import { AppContext } from '../AppContext';
 
 export const FormSearch = () => {
-  const [startCity, setStartCity] = useState('');
-  const [finishCity, setFinishCity] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams({});
+  const { 
+    startCity,
+    setStartCity,
+    finishCity,
+    setFinishCity
+  } = useContext(AppContext);
 
+  const [searchParams, setSearchParams] = useSearchParams({});
   const [departureCities, setDepartureCities] = useState<ICity[]>([]);
   const [arrivalCities, setArrivalCities] = useState<ICity[]>([]);
   const [shouldShowStartCityDropdown, setShouldShowStartCityDropdown] = useState(false);
@@ -31,12 +26,20 @@ export const FormSearch = () => {
 
   useEffect(() => {
     getCities(startCity)
-      .then(setDepartureCities);
+    .then(res => {
+      if (Array.isArray(res)) {
+        setDepartureCities(res);
+      }
+    });
   }, [startCity])
 
   useEffect(() => {
     getCities(finishCity)
-      .then(setArrivalCities);
+    .then(res => {
+      if (Array.isArray(res)) {
+        setArrivalCities(res);
+      }
+    });
   }, [finishCity])
 
   useEffect(() => {
@@ -79,7 +82,7 @@ export const FormSearch = () => {
     });
   }
 
-  const url = `/trains/?startCity=${startCity}&finishCity=${finishCity}`;
+  const NewUrl = `/trains/?startCity=${startCity}&finishCity=${finishCity}`;
 
   return (
     <div className="form">
@@ -103,7 +106,7 @@ export const FormSearch = () => {
         />
       </div>
       
-      <NavLink to={url}>
+      <NavLink to={NewUrl}>
         <ButtonSubmit onSubmit={handleSearch} text='Search' />
       </NavLink>
     </div>

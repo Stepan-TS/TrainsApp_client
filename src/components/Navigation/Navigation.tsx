@@ -1,7 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import './Navigation.scss';
+import { type } from 'os';
 
-export const Navigation = () => {
+type Props = {
+  onCleareForm: () => void;
+}
+
+export const Navigation: React.FC<Props> = ({ onCleareForm }) => {
   return (
     <nav
       className="navbar is-light is-fixed-top is-mobile has-shadow"
@@ -12,6 +17,7 @@ export const Navigation = () => {
           <NavLink 
             to="/"
             className='navbar_field'
+            onClick={onCleareForm}
           >
             Home
           </NavLink>

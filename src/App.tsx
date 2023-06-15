@@ -16,27 +16,30 @@ import { error } from 'console';
 import { addTrain } from './api';
 import { ITrain } from './types/ITrain';
 import { NewTrain } from './pages/NewTrain';
+import { AppProvider } from './components/AppContext';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
+    <AppProvider>
+      <div className="App">
+        <Header />
       
-      <div className='App-content'>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
+        <div className='App-content'>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
           
-          <Route path="newTrain" element={<NewTrain />} />
+            <Route path="newTrain" element={<NewTrain />} />
 
-          <Route path="/trains">
-            <Route index element={<ResultPage />} />
-            <Route path="/trains/:startCity/:finishCity" element={<ResultPage />} />
-          </Route>
+            <Route path="/trains">
+              <Route index element={<ResultPage />} />
+              <Route path="/trains/:startCity/:finishCity" element={<ResultPage />} />
+            </Route>
 
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </AppProvider>
   );
 }
 

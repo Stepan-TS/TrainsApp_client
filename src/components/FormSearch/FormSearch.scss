@@ -1,17 +1,19 @@
+@import '../../utils/mixins';
+
 .form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   padding: 100px 100px;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 8px;
+  width: 60%;
   
   &_fields {
-    display: flex;
-    justify-content: space-between;
-    width: calc(300px + 200px + 500px);
-
+    @include onTablet {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
     transition: 1s;
 
     &:hover {

@@ -2,7 +2,6 @@ import './Message.scss';
 
 type Props = {
   text: string;
-  status: boolean;
 }
 
 export const Message: React.FC<Props> = (props) => {

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom"
-import { getOtherDaysTrains, getTrains } from "../../api";
+import { getAllTrains, getOtherDaysTrains, getTrains } from "../../api";
 import { ITrain } from "../../types/ITrain";
 import { Train } from "../../components/Train";
 import { BsArrowRight } from "react-icons/bs";
@@ -27,8 +27,8 @@ export const ResultPage: React.FC = () => {
         && finishCity !== null
         ) {
       getTrains(startCity, finishCity)
-        .then(setTrains);
-    } 
+        .then(trains => setTrains(trains))
+      }
   }, [startCity, finishCity])
 
   useEffect(() => {

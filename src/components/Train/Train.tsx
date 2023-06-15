@@ -7,36 +7,36 @@ type Props = {
 
 export const Train: React.FC<Props> = (props) => {
   const {
-    from_city,
-    to_city,
-    departure_time,
-    arrival_time,
-    departure_date,
-    arrival_date,
-    number,
+    departureCity,
+    arrivalCity,
+    departureTime,
+    arrivalTime,    
+    departureDate,
+    arrivalDate,
+    trainNumber,
   } = props.train;
 
-  const dateOfDeparture = new Date(departure_date).toLocaleDateString();
-  const dateOfArrival = new Date(arrival_date).toLocaleDateString();
+  const dateOfDeparture = new Date(departureDate).toLocaleDateString();
+  const dateOfArrival = new Date(arrivalDate).toLocaleDateString();
 
   return (
     <div className="train">
       <div className='train_info'>
-        <p>{number}</p>
+        <p>{trainNumber}</p>
       </div>
       
       <div className='train_content'>
         <div className='box'>
-          <p className='box_title'>{from_city}</p>
+          <p className='box_title'>{departureCity}</p>
           <p className='box_data'>{dateOfDeparture}</p>
-          <p className='box_time'>{departure_time}</p>
+          <p className='box_time'>{departureTime}</p>
         </div>
         
     
         <div className='box'>
-          <p className='box_title'>{to_city}</p>
+          <p className='box_title'>{arrivalCity}</p>
           <p className='box_data'>{dateOfArrival}</p>
-          <p className='box_time'>{arrival_time}</p>
+          <p className='box_time'>{arrivalTime}</p>
         </div>
       </div>
     </div>
