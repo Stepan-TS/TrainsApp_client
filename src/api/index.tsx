@@ -1,7 +1,7 @@
 import { ITrain } from "../types/ITrain";
 import axios from 'axios';
 
-axios.defaults.baseURL = "https://stepan-ts.github.io/TrainsApp_client/";
+axios.defaults.baseURL = "https://travelbytrain.onrender.com";
 
 export function getCities(query: string) {
   return axios.get(`/?city=${encodeURIComponent(query)}`)
