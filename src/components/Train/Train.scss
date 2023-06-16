@@ -1,10 +1,20 @@
+@import '../../utils/mixins';
+@import '../../utils/variables';
+
 .train {
   display: flex;
-  background-color: rgb(253, 251, 251);
+  width: $-mobile-train-width;
+
+  @include onDesktop {
+    width: $-desktop-train-width;
+  }
+
   border: 1px solid black;
   border-radius: 8px;
+
+  background-color: rgb(253, 251, 251);
+
   margin-bottom: 20px;
-  width: 100%;
 
   &_info {
     flex: 2;
@@ -16,9 +26,15 @@
   }
 
   &_content {
+    padding: 0 20px;
     flex: 8;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    font-size: 12px;
+
+    @include onDesktop {
+      padding: 20px 80px;
+    }
   }
 }
 
@@ -28,12 +44,19 @@
   justify-content: center;
 
   &_title {
-    font-size: 24px;
+    font-size: 20px;
     text-align: center;
+
+    @include onDesktop {
+     font-size: 35px;
+    }
+
+    margin-bottom: 8px;
   }
 
   &_data, &_time {
     text-align: center;
     color: rgb(54, 52, 52);
+    font-size: 18px;
   }
 }

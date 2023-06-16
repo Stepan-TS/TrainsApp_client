@@ -12,26 +12,25 @@ export const Header = () => {
     finishCity,
     setFinishCity
   } = useContext(AppContext);
-  const location = useLocation();
-
+  
   const handleClearForm = () => {
     setStartCity('');
     setFinishCity('');
   }
-
+  const location = useLocation();
   const isHomePage = location.pathname === '/';
+
   return (
-    <div className={isHomePage ? 'header': 'header-white'}>
+    <header className={isHomePage ? 'header': 'header white'}>
       <NavLink to="/">
-        <img
-          className='header_logo'
-          src={logo}
-          alt='logo-TravelByTrain'
-          onClick={handleClearForm}
-        />
+        <div className={isHomePage ? 'logo': 'logo logo-black'}>
+          <p>TRAVEL</p>
+          <p>BY</p>
+          <p>TRAIN</p>
+        </div>
       </NavLink>
 
       <Navigation onCleareForm={handleClearForm} />
-    </div>
+    </header>
   )
 }

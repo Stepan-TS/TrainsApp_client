@@ -1,38 +1,53 @@
-body {
-  position: relative;
-}
+@import '../../utils/variables';
+@import '../../utils/mixins';
 
 .resultPage {
-  margin: 150px 100px 100px 100px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 150px 0 0;
+  height: calc(100vh - 150px);
 
   &_content {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  
   &_title {
     display: flex;
     justify-content: center;
-    width: 100%;
+
+    width: $-mobile-train-width;
+
+    @include onDesktop {
+      width: $-desktop-train-width;
+    }
+
+    padding: 20px 0;
+
     border: 1px solid rgb(55, 199, 26);
     border-radius: 8px;
-
-    margin-bottom: 40px;
   
       .title-content {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 30%;
+
+        width: 150px;
+        font-size: 20px;
       }
+  
+    margin-bottom: 30px;
   }
 
   &_updateContent {
-    position: fixed;
-    bottom: 20px;
-    right: 30px;
+    bottom: 0;
+    margin: auto;
+  }
+
+  &_message {
+    text-align: center;
+    width: 300px;
+    font-size: 20px;
+
+    margin-bottom: 20px;
   }
 }

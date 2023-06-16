@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import './Navigation.scss';
 import { type } from 'os';
 
@@ -7,6 +7,10 @@ type Props = {
 }
 
 export const Navigation: React.FC<Props> = ({ onCleareForm }) => {
+
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   return (
     <nav
       className="navbar is-light is-fixed-top is-mobile has-shadow"
@@ -16,7 +20,7 @@ export const Navigation: React.FC<Props> = ({ onCleareForm }) => {
         <div className="navbar">
           <NavLink 
             to="/"
-            className='navbar_field'
+            className={isHomePage ? 'navbar_field': 'navbar_field field-black'}
             onClick={onCleareForm}
           >
             Home
@@ -24,7 +28,7 @@ export const Navigation: React.FC<Props> = ({ onCleareForm }) => {
 
           <NavLink 
             to="/newTrain"
-            className='navbar_field'
+            className={isHomePage ? 'navbar_field': 'navbar_field field-black'}
           >
             Add New Train
           </NavLink>

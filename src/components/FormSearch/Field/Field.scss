@@ -1,25 +1,18 @@
 @import '../../../utils/mixins';
+@import '../../../utils/variables';
 
 .form {
   position: relative;
 }
 
 .field {
-  &:not(:last-child) {
-    margin-right: 30px;
-  }
   &_item {
-    height: 50px;
-    width: 200px;
+    height: $-mobile-field-heigth;
+    width: $-mobile-field-width;
 
     @include onDesktop {
-      height: 70px;
-      width: 250px;
-    }
-
-    @include onBigScreens {
-      height: 80px;
-      width: 350px;
+      height: $-desktop-field-heigth;
+      width: $-desktop-field-width;
     }
 
     padding-left: 20px;
@@ -38,21 +31,30 @@
 
     &::placeholder {
       font-size: 18px;
+      font-family: 'Roboto', sans-serif;
     }
   }
 }
 
 .dropdown {
   position: absolute;
-  background-color: white;
-  width: 322px;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid gray;
-  overflow-y: scroll;
+ 
+  width: $-mobile-drop-width;
+  min-height: 50px;
   max-height: 100px;
+
+  @include onDesktop {
+    width: $-desktop-drop-width;
+  }
+
+  border: 1px solid gray;
   border: none;
   border-radius: 8px;
+
+  background-color: rgb(229, 228, 228);
+  overflow-y: scroll;
+  z-index: 999;
+
 }
 
 .dropdown:empty {
@@ -61,8 +63,6 @@
 
 .dropdown-row {
   font-size: 20px;
-  padding: 10px 0;
+  padding: 10px 20px;
   cursor: pointer;
-  text-align: center;
-  margin: 2px 0;
 }

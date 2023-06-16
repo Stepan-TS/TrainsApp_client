@@ -1,4 +1,13 @@
+@import '../../../utils/variables';
+@import '../../../utils/mixins';
+
 .error {
   color: red;
   font-size: 20px;
+  width: $-mobile-train-width;
+  text-align: center;
+
+  @include onDesktop {
+    width: $-desktop-train-width;
+  }
 }

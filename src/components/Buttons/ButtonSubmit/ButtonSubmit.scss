@@ -1,13 +1,20 @@
+@import './../../../utils/mixins';
+
 .form {
   position: relative;
 }
 .btn-submit {
     position: absolute;
     bottom: -30px;
-    right: 80px;
+    
   &_search {
     width: 250px;
-    height: 70px;
+    height: 60px;
+
+    @include onDesktop {
+      height: 80px;
+      width: 300px;
+    }
     background-color: #ec9a45;
     color: white;
     border-radius: 50px;

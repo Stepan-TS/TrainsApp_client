@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom"
 import { getAllTrains, getOtherDaysTrains, getTrains } from "../../api";
 import { ITrain } from "../../types/ITrain";
@@ -8,18 +8,21 @@ import { BsArrowRight } from "react-icons/bs";
 import './ResultPage.scss';
 import { FormSearch } from "../../components/FormSearch";
 import { ButtonUpdate } from "../../components/Buttons/ButtonUpdate";
-import { InfoMessage } from "./InfoMessage";
 import { Messages } from "../../types/Messages";
+import { AppContext } from "../../components/AppContext";
 
 export const ResultPage: React.FC = () => {
+  const { 
+    shouldShowForm,
+    setShouldShowForm,
+  } = useContext(AppContext);
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const startCity = searchParams.get('startCity')
   const finishCity = searchParams.get('finishCity')
 
   const [trains, setTrains] = useState<ITrain[]>([]);
-
-  const [shouldShowForm, setShouldShowForm] = useState(false);
   const [shouldScroll, setShouldScroll] = useState(false);
 
   useEffect(() => {
@@ -43,36 +46,38 @@ export const ResultPage: React.FC = () => {
 
   return (
     <div className="resultPage">
-      {shouldShowForm && (
-        <FormSearch />
-      )}
-    
-      <div className='resultPage_title'>
-        <div className='title-content'>
-          <p>{startCity}</p>
-
-          <BsArrowRight />
-
-          <p>{finishCity}</p>
-        </div>
-      </div>
-
-      <div className="resultPage_updateContent">
-        <ButtonUpdate onUpdate={handleChange} />
-      </div>
-
       <div className="resultPage_content">
-        {trains.length > 0 ? (
-          trains.map((train) => (
-            <div key={train.id}>
-              <Train
-                train={train}
-              />
-            </div>
-          ))
-          ) : (
-            <InfoMessage text={Messages.NoTrainsToday} />
-          )}
+        {shouldShowForm && (
+          <FormSearch />
+        )}
+    
+        <div className='resultPage_title'>
+          <div className='title-content'>
+            <p>{startCity}</p>
+
+            <BsArrowRight />
+
+            <p>{finishCity}</p>
+          </div>
+        </div>
+
+        <div className="resultPage_trains">
+          {trains.length > 0 ? (
+            trains.map((train) => (
+              <div key={train.id}>
+                <Train
+                  train={train}
+                />
+              </div>
+            ))
+            ) : (
+              <h2 className="resultPage_message">{ Messages.NoTrainsToday }</h2>
+            )}
+        </div>
+
+        <div className="resultPage_updateContent">
+          <ButtonUpdate onUpdate={handleChange} />
+        </div>
       </div>
     </div>
   )

@@ -3,9 +3,7 @@ import './FormSearch.scss';
 import { ButtonSubmit } from '../Buttons/ButtonSubmit';
 import { Field } from './Field';
 import { useContext, useEffect, useState } from 'react';
-import { ITrain } from './../../types/ITrain';
-import axios from 'axios';
-import { useSearchParams, NavLink } from 'react-router-dom';
+import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 import { getCities } from '../../api';
 import { ICity } from '../../types/ICity';
 import { AppContext } from '../AppContext';
@@ -15,7 +13,8 @@ export const FormSearch = () => {
     startCity,
     setStartCity,
     finishCity,
-    setFinishCity
+    setFinishCity,
+    setShouldShowForm,
   } = useContext(AppContext);
 
   const [searchParams, setSearchParams] = useSearchParams({});
@@ -23,8 +22,13 @@ export const FormSearch = () => {
   const [arrivalCities, setArrivalCities] = useState<ICity[]>([]);
   const [shouldShowStartCityDropdown, setShouldShowStartCityDropdown] = useState(false);
   const [shouldShowFinishCityDropdown, setShouldShowFinishCityDropdown] = useState(false);
+  const [shouldShowMessage, setShouldShowMessage] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
+    setShouldShowMessage(false);
+
     getCities(startCity)
     .then(res => {
       if (Array.isArray(res)) {
@@ -34,6 +38,8 @@ export const FormSearch = () => {
   }, [startCity])
 
   useEffect(() => {
+    setShouldShowMessage(false);
+    
     getCities(finishCity)
     .then(res => {
       if (Array.isArray(res)) {
@@ -76,19 +82,26 @@ export const FormSearch = () => {
   }
 
   const handleSearch = (event: React.FormEvent) => {
-    setSearchParams({ 
-      startCity: `${startCity}`,
-      finishCity: `${finishCity}`
-    });
+    if (!startCity || !finishCity) {
+      setShouldShowMessage(true);
+    } else {
+      setSearchParams({ 
+        startCity: `${startCity}`,
+        finishCity: `${finishCity}`
+      });
+  
+      navigate(`${NewUrl}`);
+      setShouldShowForm(false);
+    }
   }
 
   const NewUrl = `/trains/?startCity=${startCity}&finishCity=${finishCity}`;
 
   return (
-    <div className="form">
+    <div className='form'>
       <div className='form_fields'>
         <Field 
-          text={'from'} 
+          text={'Enter departure city'} 
           city={startCity}
           onChange={handleChangeStartCity}
           values={departureCities}
@@ -97,18 +110,23 @@ export const FormSearch = () => {
         />
         
         <Field 
-          text={'to'} 
+          text={'Enter arrival city'} 
           city={finishCity}
           onChange={handleChangeFinishCity}
           values={arrivalCities}
           onChose={handleChoseFinishCity}
           isDropdown={shouldShowFinishCityDropdown}
         />
+
       </div>
       
-      <NavLink to={NewUrl}>
-        <ButtonSubmit onSubmit={handleSearch} text='Search' />
-      </NavLink>
+      {shouldShowMessage && (
+        <div className='form_message'>
+          <h2>You must enter two fields!</h2>
+        </div>
+      )}
+      
+      <ButtonSubmit onSubmit={handleSearch} text='Search' />
     </div>
   )
 }

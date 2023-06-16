@@ -26,9 +26,10 @@ export const Field: React.FC<Props> = (props) => {
       <input
         className="field_item"
         type="text"
-        placeholder={`${text}: City Name`}
+        placeholder={text}
         value={city}
         onChange={onChange}
+        required
       />
 
       {isDropdown && (

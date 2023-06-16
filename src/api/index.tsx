@@ -29,14 +29,6 @@ export function getOtherDaysTrains(
     .then(res => res.data)
 }
 
-export function addTrain(train: ITrain): void {
-  axios.post('/newTrain', train)
-    .then(response => {
-      // Handle successful response
-      console.log('Train added successfully:', response.data);
-    })
-    .catch(error => {
-      // Handle error
-      console.error('Error adding train:', error);
-    });
+export function addTrain(train: ITrain): Promise<ITrain[]> {
+  return axios.post('/newTrain', train);
 }

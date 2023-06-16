@@ -1,28 +1,39 @@
 @import '../../utils/mixins';
 
 .form {
-  padding: 100px 100px;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
+  height: 350px;
   border-radius: 8px;
-  width: 60%;
-  
+
   &_fields {
-    @include onTablet {
+    transition: 1s;
+
+    @include onDesktop {
+      width: 80%;
       display: flex;
       justify-content: space-between;
-      width: 100%;
     }
-    transition: 1s;
 
     &:hover {
       box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
     }
   }
 
-  height: 200px;
-  background-color: rgba(6,203,103,.6); 
+  &_message {
+    position: absolute;
+    padding: 10px;
+    bottom: 60px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgb(235, 20, 20);
+    opacity: 0.6;
+    color: white;
+  }
 
+  background-color: rgba(228, 201, 149, 0.6); 
   margin-bottom: 50px;
 }

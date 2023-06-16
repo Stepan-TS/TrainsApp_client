@@ -10,7 +10,7 @@ export const Message: React.FC<Props> = (props) => {
   } = props;
 
   return (
-    <div className="form-field">
+    <div className="message">
       <h2 className='error'>
         {text}
       </h2>

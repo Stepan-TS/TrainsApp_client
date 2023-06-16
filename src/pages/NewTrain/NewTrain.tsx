@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import './NewTrain.scss';
 import { ITrain } from '../../types/ITrain';
 import { addTrain } from '../../api';
@@ -36,16 +36,22 @@ export const NewTrain = () => {
       });
     }
 
+    useEffect(() => {
+      setShouldShowMessage(false);
+    }, [newTrain])
+
     const handleClick = async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault()
 
       try {
-        await addTrain(newTrain);
-        clear()
-        setShouldShowModal(true)
-      } catch(err) {
+         await addTrain(newTrain);
+         clear();
+         setShouldShowModal(true)
+        } catch (err) {
+        console.error('Error adding train:', err);
+        setShouldShowModal(false);
         setShouldShowMessage(true);
-      } 
+      }
     }
 
     const handleCloseModal = () => {
@@ -58,24 +64,27 @@ export const NewTrain = () => {
           <SuccessModal onClose={handleCloseModal} />
         )}
 
-        <h2>Add new train</h2>
+        <h2 className='addTrain_title'>Add new train</h2>
 
         <form onSubmit={handleClick}>
-          <input className='form-field' type='text' placeholder='from_city' onChange={handleChange} name='departureCity' value={newTrain.departureCity} required />
-          <input className='form-field' type='text' placeholder='to_city' onChange={handleChange} name='arrivalCity' value={newTrain.arrivalCity} required />
-          <input className='form-field' type='date' placeholder='departure_date' onChange={handleChange} name='departureDate' value={newTrain.departureDate} required />
-          <input className='form-field' type='date' placeholder='arrival_date' onChange={handleChange} name='arrivalDate' value={newTrain.arrivalDate} required />
-          <input className='form-field' type='time' placeholder='departure_time' step="1" onChange={handleChange} name='departureTime' value={newTrain.departureTime} required />
-          <input className='form-field' type='time' placeholder='arrival_time' step="1" onChange={handleChange} name='arrivalTime' value={newTrain.arrivalTime} required />
-          <input className='form-field' type='number' placeholder='number' onChange={handleChange} name='trainNumber' value={newTrain.trainNumber} required />
-
+          <div className='fields'>
+            <input className='form-field' type='text' placeholder='enter departure city' onChange={handleChange} name='departureCity' value={newTrain.departureCity} required />
+            <input className='form-field' type='text' placeholder='enter arrival city' onChange={handleChange} name='arrivalCity' value={newTrain.arrivalCity} required />
+            <input className='form-field' type='date' placeholder='enter departure date' onChange={handleChange} name='departureDate' value={newTrain.departureDate} required />
+            <input className='form-field' type='date' placeholder='arrival_date' onChange={handleChange} name='arrivalDate' value={newTrain.arrivalDate} required />
+            <input className='form-field' type='time' placeholder='departure_time' step="1" onChange={handleChange} name='departureTime' value={newTrain.departureTime} required />
+            <input className='form-field' type='time' placeholder='arrival_time' step="1" onChange={handleChange} name='arrivalTime' value={newTrain.arrivalTime} required />
+            <input className='form-field' type='number' placeholder='enter number of train' onChange={handleChange} name='trainNumber' value={newTrain.trainNumber} required />
+          </div>
+         {!shouldShowMessage && (
           <div className='new-train_btn'>
             <ButtonSubmit text='Add Train'/>
           </div>
+         )} 
         </form>
 
         {shouldShowMessage && (
-          <Message text='An error occurred while adding the train!' />
+          <Message text='An error occurred while adding the train. Try later!' />
         )}
     </div>
   )
