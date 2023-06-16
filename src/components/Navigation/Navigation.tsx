@@ -1,6 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import './Navigation.scss';
-import { type } from 'os';
 
 type Props = {
   onCleareForm: () => void;

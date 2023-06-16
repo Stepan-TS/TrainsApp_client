@@ -1,20 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  Navigate,
   Route,
   Routes,
-  useLocation,
-  useNavigate,
 } from 'react-router-dom';
 import './App.scss';
 import { HomePage } from './pages/HomePage';
 import { PageNotFound } from './pages/PageNotFound';
 import { ResultPage } from './pages/ResultPage';
 import { Header } from './components/Header';
-import axios from 'axios';
-import { error } from 'console';
-import { addTrain } from './api';
-import { ITrain } from './types/ITrain';
 import { NewTrain } from './pages/NewTrain';
 import { AppProvider } from './components/AppContext';
 

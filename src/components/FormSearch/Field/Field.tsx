@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './Field.scss';
 import { ICity } from '../../../types/ICity';
 

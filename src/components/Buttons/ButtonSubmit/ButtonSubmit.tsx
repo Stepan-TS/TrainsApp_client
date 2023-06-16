@@ -10,7 +10,7 @@ export const ButtonSubmit: React.FC<Props> = (props) => {
   const {
     onSubmit,
     onSendData,
-    text = 's',
+    text,
   } = props;
 
   const onClick = onSubmit || onSendData;

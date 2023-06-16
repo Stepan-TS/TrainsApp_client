@@ -1,6 +1,6 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom"
-import { getAllTrains, getOtherDaysTrains, getTrains } from "../../api";
+import { getTrains } from "../../api";
 import { ITrain } from "../../types/ITrain";
 import { Train } from "../../components/Train";
 import { BsArrowRight } from "react-icons/bs";
