@@ -1,5 +1,6 @@
-import { useLocation } from "react-router-dom";
+import { useContext } from 'react';
 import './Logo.scss';
+import { AppContext } from '../../AppContext';
 
 type Props = {
   size: string;
@@ -7,10 +8,20 @@ type Props = {
 }
 
 export const Logo: React.FC<Props> = ({ size, isWhite }) => {
+
+  const { 
+    setStartCity,
+    setFinishCity,
+  } = useContext(AppContext);
   
+  const handleClearFields = () => {
+    setStartCity('');
+    setFinishCity('');
+  } 
+
   if (size === 'big') {
     return (
-        <div className={isWhite ? 'logo': 'logo logo-black'}>
+        <div className={isWhite ? 'logo': 'logo logo-black'} onClick={handleClearFields}>
           <p>TRAVEL</p>
           <p>BY</p>
           <p>TRAIN</p>
