@@ -1,4 +1,5 @@
 import { ITrain } from '../../types/ITrain';
+import { Logo } from '../Header/Logo/Logo';
 import './Train.scss';
 
 type Props = {
@@ -16,13 +17,19 @@ export const Train: React.FC<Props> = (props) => {
     trainNumber,
   } = props.train;
 
+  console.log(trainNumber);
+
   const dateOfDeparture = new Date(departureDate).toLocaleDateString();
   const dateOfArrival = new Date(arrivalDate).toLocaleDateString();
 
   return (
     <div className="train">
       <div className='train_info'>
-        <p>{trainNumber}</p>
+        <div className='train_info-logo'>
+          <Logo size='small' isWhite={false} />
+        </div>
+        
+        <p className='train_info-number'>{trainNumber}</p>
       </div>
       
       <div className='train_content'>

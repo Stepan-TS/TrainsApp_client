@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/TrainsApp_client/static/css/main.28f364f4.css",
-    "main.js": "/TrainsApp_client/static/js/main.66591008.js",
+    "main.css": "/TrainsApp_client/static/css/main.40c5517b.css",
+    "main.js": "/TrainsApp_client/static/js/main.6139b220.js",
     "static/media/foto.jpeg": "/TrainsApp_client/static/media/foto.17932f5f90415661ab42.jpeg",
-    "static/media/logo.svg": "/TrainsApp_client/static/media/logo.49f2589bcb91e9688bbe362a6c2a38cb.svg",
     "index.html": "/TrainsApp_client/index.html",
     "static/media/success.svg": "/TrainsApp_client/static/media/success.83f8b18e6d1671e029dda05ac17d7455.svg",
-    "main.28f364f4.css.map": "/TrainsApp_client/static/css/main.28f364f4.css.map",
-    "main.66591008.js.map": "/TrainsApp_client/static/js/main.66591008.js.map"
+    "main.40c5517b.css.map": "/TrainsApp_client/static/css/main.40c5517b.css.map",
+    "main.6139b220.js.map": "/TrainsApp_client/static/js/main.6139b220.js.map"
   },
   "entrypoints": [
-    "static/css/main.28f364f4.css",
-    "static/js/main.66591008.js"
+    "static/css/main.40c5517b.css",
+    "static/js/main.6139b220.js"
   ]
 }

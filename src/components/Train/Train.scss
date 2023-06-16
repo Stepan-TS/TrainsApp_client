@@ -19,10 +19,18 @@
   &_info {
     flex: 2;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    font-size: 30px;
+    justify-content: center;
     border-right: 1px solid black;
+
+    &-number {
+      font-size: 20px;
+      border: 1px solid black;
+      border-radius: 3px;
+
+      padding: 2px;
+    }
   }
 
   &_content {

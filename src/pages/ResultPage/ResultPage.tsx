@@ -25,6 +25,8 @@ export const ResultPage: React.FC = () => {
   const [trains, setTrains] = useState<ITrain[]>([]);
   const [shouldScroll, setShouldScroll] = useState(false);
 
+  console.log(trains)
+
   useEffect(() => {
     if (startCity !== null 
         && finishCity !== null

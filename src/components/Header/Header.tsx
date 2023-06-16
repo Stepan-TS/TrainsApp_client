@@ -4,6 +4,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { Navigation } from '../Navigation';
 import { useContext } from 'react';
 import { AppContext } from '../AppContext';
+import { Logo } from './Logo/Logo';
 
 export const Header = () => {
   const { 
@@ -17,17 +18,14 @@ export const Header = () => {
     setStartCity('');
     setFinishCity('');
   }
+ 
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
   return (
     <header className={isHomePage ? 'header': 'header white'}>
       <NavLink to="/">
-        <div className={isHomePage ? 'logo': 'logo logo-black'}>
-          <p>TRAVEL</p>
-          <p>BY</p>
-          <p>TRAIN</p>
-        </div>
+        <Logo size='big' isWhite={isHomePage} />
       </NavLink>
 
       <Navigation onCleareForm={handleClearForm} />
